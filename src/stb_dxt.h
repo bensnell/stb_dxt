@@ -69,7 +69,13 @@ int imin(int x, int y);
 void extract_block(const unsigned char *src, int x, int y, int w, int h, unsigned char *block);
 
 // Get the size of the destination pixels (# bytes)
+#ifdef _WIN32
+__declspec(dllexport) 
+#endif
 uint64_t get_compress_pixels_dst_size_bytes(uint64_t w, uint64_t h, bool is_rgba);
 
 // Destination must already be allocated
+#ifdef _WIN32
+__declspec(dllexport) 
+#endif
 bool compress_pixels(unsigned char* dst, const unsigned char* src, uint64_t w, uint64_t h, bool is_rgba);
