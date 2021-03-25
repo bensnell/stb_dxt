@@ -1,1 +1,10 @@
 __pycache__
+*.pyc
+*.jpg
+*.jpeg
+*.png
+*.tif
+*.tiff
+*.dxt
+*.dxt1
+*.dxt5

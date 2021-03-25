@@ -1,12 +1,20 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 import os 
 import ctypes
 from PIL import Image
 import numpy as np
+import platform
 
 # Get the path to the shared library
-_dxt_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'libs','lib_stb_dxt.so')
+_dxt_path = ''
+if platform.system().lower() == 'linux':
+	_dxt_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'libs','linux','lib_stb_dxt.so')
+elif platform.system().lower() == 'windows':
+	_dxt_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'libs','windows','stb_dxt.dll')
+else:
+	print("System is not supported")
+	exit()
 # Load the C-bindings
 _dxt = ctypes.CDLL(_dxt_path)
 
